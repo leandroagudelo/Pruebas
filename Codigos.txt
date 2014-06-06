@@ -1,0 +1,51 @@
+Codigo para llenar las tablas
+
+
+	from polls.models import Poll, Choice
+
+	Poll.objects.all()
+
+	from datetime import datetime
+
+
+	p = Poll(question="What's up?", pub_date=datetime.now())
+
+	p.save()
+
+Codigo para consultar las tablas
+
+	from polls.models import Poll, Choice
+	Poll.objects.all()
+	Poll.objects.filter(id=1)
+	Poll.objects.filter(question__startswith='What')
+	
+	Poll.objects.get(id=2)
+	Poll.objects.get(pk=1)
+
+Codigo para actualizar campos
+	p2=Poll.objects.get(id=2)
+
+
+Codigo para relacionar tablas
+
+	p = Poll.objects.get(pk=1)
+	p.choice_set.create(choice='Not much', votes=0)
+	p.choice_set.count()
+	p.choice_set.all()
+
+
+	c = p.choice_set.create(choice='Just hacking again', votes=1000)
+	c.poll
+	px=c.poll
+	px.question
+
+
+Como Cambiar la contraseña del administrador de Django
+
+	>> python manage.py shell
+	>> from django.contrib.auth.models import User 
+	>> user = User.objects.get(username="tu_usuario o ID=1") 
+	>> user.set_password("tu nueva password") 
+	>> user.save() 
+
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prueba Django home</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+        <h1>Primera Aplicacion WEB</h1>
+
+        <p><h2> Bievenido </h2> <br> {{ name }} {{ lastname }}</p>
+
+        {% if status == "SUCCESS" %}
+            <div class="alert alert-success">
+                <strong>SUCCESS!</strong> {{ msg_status }} {{ name }} {{ lastname }}.
+            </div>
+
+        {% elif status == "FAILURE" %}
+             <div class="alert alert-danger">
+                <strong>FAILURE!</strong> {{ msg_status }}{{ name }} {{ lastname }}.
+            </div>
+
+        {% endif %}
+
+    
+            <div class="panel-heading">
+              <h3 class="panel-title">Encuestas</h3>
+            </div>
+            <div class="panel-body">
+                <form action="/save_poll/" method="post">
+                {% csrf_token %}
+                <label>Pregunta</label> <br>
+                <input type="text" name="question" class="form-control" placeholder="Pregunta" required autofocus>
+                <label>Fecha</label><br>
+                <input type="DATE" name="pub_date" class="form-control" placeholder="Fecha" required>
+                <br>
+                <br>
+
+                <button type="submit" class="btn btn-lg btn-success">Guardar</button>
+
+                </form>
+
+            </div>
+    </div>
+
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+
+
